@@ -1,0 +1,51 @@
+// vmTheme.ts
+
+// Styled Elements
+import { createTheme } from "@mui/material/styles";
+
+// Hooks
+import { useMemo } from "react";
+
+// Colors
+import { PaletteMode, colors } from "@mui/material";
+
+// Types
+import { CustomPalette } from "../types";
+
+export const vmTheme = (mode: PaletteMode) => {
+  // memoizing the result so it won't calculate every time
+  const theme = useMemo(
+    () =>
+      createTheme({
+        components: {
+          MuiCssBaseline: {
+            styleOverrides: {
+              body: {
+                margin: 0,
+                mode,
+                ...(mode === "light"
+                  ? {
+                      backgroundColor: colors.orange[800],
+                    }
+                  : {
+                      backgroundColor: colors.orange[900],
+                    }),
+              },
+            },
+          },
+        },
+        palette: {
+          primary: {
+            main: mode === "light" ? colors.orange[800] : colors.orange[900],
+            black: mode === "light" ? colors.grey[800] : colors.grey[900],
+            white: mode === "light" ? colors.grey[100] : colors.grey[600],
+            iconColor: mode === "light" ? colors.grey[900] : colors.grey[100],
+          },
+          mode, // Add the mode property to the palette object
+        } as CustomPalette, // Assert the palette to the custom interface
+      }),
+    [mode]
+  );
+
+  return theme;
+};
