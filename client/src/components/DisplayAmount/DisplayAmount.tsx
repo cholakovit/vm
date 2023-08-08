@@ -15,12 +15,13 @@ import { AMOUNT, CHANGE } from '../../constants/common';
 
 // Custom hooks
 import { useChangeEffect, useFlagEffect } from '../../hooks/customHooks';
+import { AnyAction } from '@reduxjs/toolkit';
 
 const DisplayAmount = () => {
   const { value, flag, errorMessage } = useSelector((state: RootState) => state.amount);
   const [change, setChange] = useState<number>(0);
 
-  const dispatch = useDispatch();
+  const dispatch: React.Dispatch<AnyAction> = useDispatch();
 
   // custom hook for the change
   useFlagEffect(flag, value, setChange);

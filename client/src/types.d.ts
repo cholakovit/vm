@@ -76,6 +76,20 @@ export type ProviderProps = {
 }
 
 export type AlertProps = {
-  alert: string | null
-  type: any
+  alert: string | null;
+  type: string;
+};
+
+type Item = {
+  name: string
+  price: number
+  number: number
+}
+
+type InitialState = {
+  items: Item[] | void,
+  status: String
+  allItemsStatus: String
+  allItemsError: string | null
+  itemsError: string | null
 }

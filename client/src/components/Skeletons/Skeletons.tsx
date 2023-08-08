@@ -33,7 +33,11 @@ const Skeletons: FC<SkeletonProps> = ({ flag, width, height }) => {
         {
           1: (
             <>
-              {items}
+              {items.map((item, index) => (
+                <React.Fragment key={index}>
+                  {item}
+                </React.Fragment>
+              ))}
             </>
           ),
           2: (

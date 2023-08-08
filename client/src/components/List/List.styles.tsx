@@ -37,7 +37,7 @@ export const SelectionHolder = styled(Box)(({ theme }) => ({
 export const ItemsHolder = styled(Box)(({ theme }) => ({
   display: 'flex',
   flexWrap: 'wrap',
-  width: '80%', // Adjust the width to your preference for mobile
+  width: '80%', 
   [theme.breakpoints.down('sm')]: {
     width: '100%', // Set the width back to 80% for larger screens (sm and above)
     order: 2

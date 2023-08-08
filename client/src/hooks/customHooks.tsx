@@ -1,21 +1,20 @@
 import { useEffect, useRef, useState } from 'react';
 import type { ItemProps } from '../types';
 import { setAmount } from '../store/amountSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { subtractPrice } from '../store/amountSlice';
-import { RootState } from '../types';
-import { useAppSelector } from '../store/hooks';
-import { getItems } from '../store/dataSlice';
+import { useAppDispatch, useAppSelector } from '../store/hooks';
+import { getItems, getStatus, selectItems } from '../store/dataSlice';
+import { IDLE } from '../constants/common';
+import { AnyAction } from '@reduxjs/toolkit';
 
 export const useVendingItems = (data: ItemProps[]) => {
   const [vendingItems, setVendingItems] = useState<ItemProps[] | undefined>(undefined);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    setTimeout(() => {
       setVendingItems(data);
       setIsLoading(false);
-    }, 3000);
   }, [data]);
 
   return { vendingItems, isLoading };
@@ -47,8 +46,8 @@ export const useFlagEffect = (flag: number, value: number, callback: (value: num
   }, [flag, value, callback]);
 };
 
-export const useChangeEffect = (change: number, dispatch: any) => {
-  const [localChange, setLocalChange] = useState(0);
+export const useChangeEffect = (change: number, dispatch: React.Dispatch<AnyAction>) => {
+  const [localChange, setLocalChange] = useState<number>(0);
 
   useEffect(() => {
     if (change !== null) {
@@ -71,7 +70,7 @@ export const useChangeEffect = (change: number, dispatch: any) => {
 export const useSubmitHandler = (
   amountRef: React.MutableRefObject<HTMLInputElement>,
   submitAllowed: boolean,
-  dispatch: any
+  dispatch: React.Dispatch<AnyAction>
 ) => {
   const onSubmit = () => {
     if (submitAllowed === true) {
@@ -138,7 +137,7 @@ export const useConcatenatedNumber = () => {
 };
 
 export const useEnterClick = () => {
-  const dispatch = useDispatch();
+  const dispatch: React.Dispatch<AnyAction> = useDispatch();
   //const data = useSelector((state: RootState) => state.data);
   const items = useAppSelector(getItems);
 
@@ -182,9 +181,7 @@ export const useEnterClickedEffect = (
   //setDisplayedConcatenatedNumber: React.Dispatch<React.SetStateAction<number>>,
   handleResetClick: any
 ) => {
-    const [displayedConcatenatedNumber, setDisplayedConcatenatedNumber] = useState(0);
-
-
+  const [displayedConcatenatedNumber, setDisplayedConcatenatedNumber] = useState(0);
   useEffect(() => {
     setEnterClicked(amountEnterClicked);
 
@@ -193,3 +190,13 @@ export const useEnterClickedEffect = (
     //setDisplayedConcatenatedNumber(0);
   }, [amountEnterClicked, setEnterClicked, setDisplayedConcatenatedNumber]);
 };
+
+export const useEffectDispatchItems = () => {
+  const status = useAppSelector(getStatus);
+  const dispatch: any = useAppDispatch();
+  useEffect(() => {
+    if (status === IDLE) {
+      dispatch(selectItems());
+    }
+  }, []);
+}

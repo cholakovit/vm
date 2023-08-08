@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 // Styled Elements
 import { ItemContainer, ItemsHolder, SelectionHolder } from './List.styles';
@@ -9,74 +9,64 @@ import Item from '../Item/Item';
 import Selection from '../Selection/Selection';
 import VendingButtons from '../VendingButtons/VendingButtons';
 
-// Types
-import type { RootState } from '../../types';
-
-// Redux
-import { useSelector } from 'react-redux';
-
 // Custom Hook
-import { useVendingItems } from '../../hooks/customHooks';
+import { useEffectDispatchItems, useVendingItems } from '../../hooks/customHooks';
 
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { getStatus, getItems, getItemsError, selectItems } from '../../store/dataSlice';
-import { IDLE } from '../../constants/common';
+import { useAppSelector } from '../../store/hooks';
+import { getItems, getItemsError } from '../../store/dataSlice';
+import AlertMessage from '../Alert/Alert';
 
 const List = () => {
-  const dispatch = useAppDispatch();
 
-  const status = useAppSelector(getStatus);
-  const error = useAppSelector(getItemsError);
+  // By using the custom hooks, I have encapsulated the specific logic for form submission and input change in separate hooks, 
+  // making my code cleaner and more reusable. Now, the logic for handling the form submission and input change is abstracted 
+  // away in the custom hooks, and I can easily reuse these hooks in other components if needed.
 
-  useEffect(() => {
-    console.log("status", status)
-    if (status === IDLE) {
-      dispatch(selectItems());
-    }
-  }, []);
+  const error: string = useAppSelector(getItemsError);
+
+  useEffectDispatchItems()
 
   const items = useAppSelector(getItems);
-
-  // const data = useSelector((state: RootState) => state.data);
-  // custom hook for using the vending items with useEffect
-  // const { vendingItems, isLoading } = useVendingItems(data);
-
-  //console.log("status", status)
-  //console.log("List items", items)
 
   // custom hook for using the vending items with useEffect
   const { vendingItems, isLoading } = useVendingItems(items);
 
   return (
     <ItemContainer>
-      {isLoading ? (
-        <>
-          <ItemsHolder>
-            <Skeletons flag={1} width={130} height={110} />
-          </ItemsHolder>
-          <SelectionHolder>
-            <Skeletons flag={2} width={210} height={370} />
-          </SelectionHolder>
-        </>
+      {error ? (
+        <AlertMessage alert={error} type="error" />
       ) : (
-        <>
-          {vendingItems && vendingItems.length > 0 ? (
-            <>
+        isLoading ? (
+          <>
+            <ItemsHolder>
+              <Skeletons flag={1} width={130} height={110} />
+            </ItemsHolder>
+            <SelectionHolder>
+              <Skeletons flag={2} width={210} height={370} />
+            </SelectionHolder>
+          </>
+        ) : (
+          <>
+            {vendingItems && vendingItems.length > 0 ? (
+              <>
+                <ItemsHolder>
+                  {vendingItems?.map((item, index) => (
+                    <Item item={item} id={index} key={index} /> // Add a unique key prop
+                  ))}
+                </ItemsHolder>
+              </>
+            ) : (
               <ItemsHolder>
-                {vendingItems?.map((item, index) => (
-                  <Item item={item} id={index} />
-                ))}
+                <Skeletons flag={1} width={160} height={120} />
               </ItemsHolder>
-            </>
-          ) : (
-            <Skeletons flag={1} width={160} height={120} />
-          )}
+            )}
 
-          <SelectionHolder>
-            <Selection />
-            <VendingButtons />
-          </SelectionHolder>
-        </>
+            <SelectionHolder>
+              <Selection />
+              <VendingButtons />
+            </SelectionHolder>
+          </>
+        )
       )}
     </ItemContainer>
   );

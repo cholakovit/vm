@@ -40,9 +40,6 @@ const VendingButtons = () => {
   // Use the custom hook for handling the effects of amountEnterClicked change
   useEnterClickedEffect(amountEnterClicked, setEnterClicked, handleResetClick);
 
-  console.log("displayedConcatenatedNumber: ", displayedConcatenatedNumber)
-
-
   return (
     <>
       <Alert alert={errorMessage} type="error" />

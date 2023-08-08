@@ -17,6 +17,7 @@ import DisplayAmount from '../DisplayAmount/DisplayAmount';
 // Constants
 import { ENTER } from '../../constants/common';
 import { useInputChangeHandler, useSubmitHandler } from '../../hooks/customHooks';
+import { AnyAction } from '@reduxjs/toolkit';
 
 const Selection = () => {
   const [submitAllowed, setSubmitAllowed] = useState<boolean>(false);
@@ -28,7 +29,7 @@ const Selection = () => {
     formState: { errors }
   } = useForm();
 
-  const dispatch = useDispatch();
+  const dispatch: React.Dispatch<AnyAction> = useDispatch();
 
   // By using the custom hooks, I have encapsulated the specific logic for form submission and input change in separate hooks, 
   // making my code cleaner and more reusable. Now, the logic for handling the form submission and input change is abstracted 
