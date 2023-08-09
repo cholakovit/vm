@@ -27,6 +27,15 @@ export const SelectionHolder = styled(Box)(({ theme }) => ({
   minHeight: "500px",
   padding: "10px 0px",
   backgroundColor: theme.palette.primary.black,
+  [theme.breakpoints.between('md', 'lg')]: {
+    width: '25%', // Around 30% width for tablets
+
+  },
+  [theme.breakpoints.between('sm', 'md')]: {
+    width: '30%', // Around 30% width for tablets
+    minWidth: '30%',
+
+  },
   [theme.breakpoints.down('sm')]: {
     width: '100%',
     order: 1,
@@ -40,6 +49,12 @@ export const ItemsHolder = styled(Box)(({ theme }) => ({
   display: 'flex',
   flexWrap: 'wrap',
   width: '80%', 
+  [theme.breakpoints.between('md', 'lg')]: {
+    width: '75%', // Around 30% width for tablets
+  },
+  [theme.breakpoints.between('sm', 'md')]: {
+    width: '70%', // Around 30% width for tablets
+  },
   [theme.breakpoints.down('sm')]: {
     width: '100%', // Set the width back to 80% for larger screens (sm and above)
     order: 2
