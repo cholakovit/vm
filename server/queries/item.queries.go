@@ -158,6 +158,18 @@ func UpdateItemByIdQuery(id *string, item *models.Item) error {
 			ctx, cancel := context.WithTimeout(context.Background(), 100*time.Second)
 			defer cancel()
 
+			// Count the items with the same category_id
+			categoryItemCount, err := collection.CountDocuments(ctx, bson.M{"category_id": id})
+			if err != nil {
+				log.Panic(err)
+			}
+
+			// Check if updating would result in more than 15 items with the same category_id
+			if categoryItemCount > 15 {
+				errChan <- errors.New("Cannot update to a category with more than 15 items")
+				return // Exit the goroutine if the condition is met
+			}
+
 			primitiveId, err := primitive.ObjectIDFromHex(*id)
 			if err != nil {
 					errChan <- err
