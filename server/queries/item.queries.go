@@ -155,8 +155,9 @@ func UpdateItemByIdQuery(id *string, item *models.Item) error {
 
 			update := bson.D{bson.E{Key: "$set", Value: bson.D{
 					bson.E{Key: "name", Value: item.Name},
-					bson.E{Key: "price", Value: item.Number},
+					bson.E{Key: "price", Value: item.Price},
 					bson.E{Key: "number", Value: item.Number},
+					bson.E{Key: "category_id", Value: item.Category_id},
 			}}}
 
 			result, err := collection.UpdateOne(ctx, filter, update)
@@ -164,7 +165,7 @@ func UpdateItemByIdQuery(id *string, item *models.Item) error {
 					errChan <- err
 					return
 			}
-
+ 
 			resultChan <- result.MatchedCount
 	}()
 
