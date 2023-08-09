@@ -13,7 +13,7 @@ const amountSlice = createSlice({
   reducers: {
     setAmount: (state, action: PayloadAction<number>) => {
       return {
-        value: action.payload,
+        value: (state.value + action.payload),
         flag: 0,
         errorMessage: "",
       };
