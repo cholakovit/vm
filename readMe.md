@@ -12,5 +12,11 @@ If the golang is installed and configured properly on your machine, enter the se
 If the nodejs and react are installed properly on your machine, enter the client folder from your command prompt and execute:
 `npm i` - to install all the needed packages and then `npm run dev`, to run the client side project. 
 
+GET     http://localhost:3000/items
+POST    http://localhost:3000/item
+GET     http://localhost:3000/item/:id
+PATCH   http://localhost:3000/item/:id
+DELETE  http://localhost:3000/item/:id
+
 At that point you should be setup and everything should work, if not.. don't hesitate to contact me at spasvcholakov@gmail.com or
 0877805027 - Spas Cholakov, so i can help you.
