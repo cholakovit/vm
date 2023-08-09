@@ -63,7 +63,7 @@ export const AmountHolder = styled(Box)(({ theme }) => ({
   [theme.breakpoints.down("sm")]: {
     display: "block",
     width: "180px",
-    padding: "30px",
+    padding: "5px",
     order: 3
   },
 }));
