@@ -77,12 +77,25 @@ func CreateItemQuery(item *models.Item) error {
 				log.Panic(err)
 			}
 
+			// Count the items with the same category_id
+			categoryItemCount, err := collection.CountDocuments(ctx, bson.M{"category_id": item.Category_id})
+			if err != nil {
+				log.Panic(err)
+			}
+
+			// Check if there are more than 15 items with the same category_id
+			if categoryItemCount > 15 {
+				resultErr = errors.New("Cannot insert more than 15 items with the same category")
+				return // Exit the goroutine if the condition is met
+			}
+
 			if count > 0 {
 				resultErr = errors.New("Cannot insert item with the same number")
 			} else {
 				_, err = collection.InsertOne(ctx, item)
 				if err != nil {
 						resultErr = err
+						return // Exit the goroutine if the condition is met
 				}
 			}
 	}()
