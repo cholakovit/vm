@@ -5,7 +5,7 @@ import React, { MutableRefObject, useRef, useState } from 'react';
 import { Button, TextField } from '@mui/material';
 
 // Styled elements
-import { FormHolder, AmountHolder, ButtonHolder, FieldHolder } from './Selection.styles';
+import { FormHolder, DisplayHolder, DisplayTitle, AmountHolder, ButtonHolder, FieldHolder } from './Selection.styles';
 
 // Form
 import { useForm } from 'react-hook-form';
@@ -13,11 +13,14 @@ import { useForm } from 'react-hook-form';
 // Redux
 import { useDispatch } from 'react-redux';
 import DisplayAmount from '../DisplayAmount/DisplayAmount';
+import { AnyAction } from '@reduxjs/toolkit';
 
 // Constants
 import { ENTER } from '../../constants/common';
+
+// Custom hooks
 import { useInputChangeHandler, useSubmitHandler } from '../../hooks/customHooks';
-import { AnyAction } from '@reduxjs/toolkit';
+
 
 const Selection = () => {
   const [submitAllowed, setSubmitAllowed] = useState<boolean>(false);
@@ -52,24 +55,26 @@ const Selection = () => {
             <TextField
               id="filled-basic"
               data-testid="providerTest"
-              label="Enter Amount..."
+              label="Enter Amount: $..."
               variant="filled"
               inputRef={amountRef}
               {...register('provider', { required: true, minLength: 1 })}
               onChange={() => handleOnChange()}
-              helperText="Required! Please insert amount"
+              helperText="Required! Please insert $"
               error={!!errors?.provider}
             />
           </FieldHolder>
 
-          <ButtonHolder>
+          <ButtonHolder variant="contained" disabled={!submitAllowed} type="submit">
+            {ENTER}
+          </ButtonHolder>          
+
+          <DisplayTitle>Display amount and returned change</DisplayTitle>
+          <DisplayHolder>
             <AmountHolder>
               <DisplayAmount />
             </AmountHolder>
-            <Button variant="contained" disabled={!submitAllowed} type="submit">
-              {ENTER}
-            </Button>
-          </ButtonHolder>
+          </DisplayHolder>
       </FormHolder>
     </form>
   );

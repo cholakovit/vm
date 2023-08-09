@@ -1,8 +1,8 @@
 // React elements
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 // Styled components
-import { ButtonHolder, ButtonSection, DisplayedConcatenatedNumber } from './VendingButtons.style';
+import { VendingButtonsHolder, ButtonHolder, ButtonSection, DisplayItemNumber, DisplayNumberItemTitle, DisplayedConcatenatedNumber, ErrorMessage } from './VendingButtons.style';
 
 // Redux
 import { useSelector } from 'react-redux';
@@ -16,6 +16,7 @@ import Alert from '../Alert/Alert';
 // Constants
 import { ENTER, RESET } from '../../constants/common';
 import { useAmountEffect, useConcatenatedNumber, useEnterClick, useEnterClickedEffect } from '../../hooks/customHooks';
+import AlertMessage from '../Alert/Alert';
 
 const VendingButtons = () => {
   const [enterClicked, setEnterClicked] = useState<boolean>(true);
@@ -26,7 +27,6 @@ const VendingButtons = () => {
     displayedConcatenatedNumber,
     handleButtonClick,
     handleResetClick,
-    setDisplayedConcatenatedNumber
   } = useConcatenatedNumber();
 
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -41,9 +41,14 @@ const VendingButtons = () => {
   useEnterClickedEffect(amountEnterClicked, setEnterClicked, handleResetClick);
 
   return (
-    <>
-      <Alert alert={errorMessage} type="error" />
-      <DisplayedConcatenatedNumber>{displayedConcatenatedNumber}</DisplayedConcatenatedNumber>
+    <VendingButtonsHolder>
+      <ErrorMessage>{errorMessage}</ErrorMessage>
+
+      <DisplayItemNumber>
+        <DisplayNumberItemTitle>Display item number:</DisplayNumberItemTitle>
+        <DisplayedConcatenatedNumber>{displayedConcatenatedNumber}</DisplayedConcatenatedNumber>
+      </DisplayItemNumber>
+
       <ButtonSection>
         {Array.from({ length: 10 }).map((_, index) => (
           <ButtonHolder
@@ -64,6 +69,7 @@ const VendingButtons = () => {
         >
           {RESET}
         </ButtonHolder>
+
         <ButtonHolder
           variant="outlined"
           size="small"
@@ -72,8 +78,10 @@ const VendingButtons = () => {
         >
           {ENTER}
         </ButtonHolder>
+
       </ButtonSection>
-    </>
+
+    </VendingButtonsHolder>
   );
 };
 

@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import type { RootState } from '../../types';
 
 // Styles
-import { AmountHolder, ChangeHolder, DisplayAmountHolder } from './DisplayAmount.style';
+import { AmountHolder, ChangeHolder, DisplayAmountHolder, ErrorMessage } from './DisplayAmount.style';
 
 // Constants
 import { AMOUNT, CHANGE } from '../../constants/common';
@@ -34,7 +34,7 @@ const DisplayAmount = () => {
       <AmountHolder>
         {value > 0 ? (
           <>
-            {AMOUNT}:<br />
+            {AMOUNT}:
             {' $ ' + value}
             <br />
           </>
@@ -43,13 +43,13 @@ const DisplayAmount = () => {
       <ChangeHolder>
         {updatedChange > 0 ? (
           <>
-            {CHANGE}:<br />
+            {CHANGE}:
             {' $ ' + updatedChange}
             <br />
           </>
         ) : null}
       </ChangeHolder>
-      {errorMessage}
+      <ErrorMessage>{errorMessage}</ErrorMessage>
     </DisplayAmountHolder>
   );
 };

@@ -23,7 +23,7 @@ const amountSlice = createSlice({
       if (state.value < itemPrice) {
         return {
           ...state,
-          errorMessage: "Insufficient balance. Please add more funds.",
+          errorMessage: "Add more funds.",
         };
       }
 

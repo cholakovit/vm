@@ -50,8 +50,9 @@ const List = () => {
             {vendingItems && vendingItems.length > 0 ? (
               <>
                 <ItemsHolder>
+                  {/* {vendingItems?.slice(0, 1).map((item, index) => ( */}
                   {vendingItems?.map((item, index) => (
-                    <Item item={item} id={index} key={index} /> // Add a unique key prop
+                    <Item item={item} id={index} key={index} />
                   ))}
                 </ItemsHolder>
               </>

@@ -13,6 +13,7 @@ export const ItemHolder = styled(Box)(({ theme }) => ({
   border: '1px solid white',
   marginRight: '20px',
   overflow: 'hidden',
+  maxHeight:"120px",
   [theme.breakpoints.down('sm')]: {
     width: '28%' // Set the width to 30% for smaller screens (down to sm breakpoint)
   },

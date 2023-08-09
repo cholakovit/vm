@@ -1,24 +1,44 @@
-import styled from "@emotion/styled";
+import { styled } from '@mui/material/styles';
 import { Box, Button } from "@mui/material";
 
+export const VendingButtonsHolder = styled(Box)(({ theme }) => ({
+  //border: "1px solid red",
+  margin: "0 5px"
+}));
 
-export const ButtonHolder = styled(Button)({
-  margin: '3px',
-});
+export const DisplayItemNumber = styled(Box)(({ theme }) => ({
+  margin: "0 20px",
+  height: "60px",
+  width: "85%",
+}));
 
-export const ButtonSection = styled(Box)({
-  textAlign: "center",
-  display: "block",
-  marginTop: "-50px"
-});
+export const DisplayNumberItemTitle = styled(Box)(({ theme }) => ({
+  color: theme.palette.primary.white,
+  fontSize: "10px",
+}));
 
 export const DisplayedConcatenatedNumber = styled(Box)(({ theme }) => ({
   width: "100%",
   textAlign: "center",
-  //color: theme.palette.primary.white,
-  color: "white",
+  color: theme.palette.primary.white,
   display: "block",
   fontSize: "20px",
   padding: "5px",
   height: "40px"
 }));
+
+export const ButtonSection = styled(Box)({
+  textAlign: "center",
+  padding: "3px"
+});
+
+export const ButtonHolder = styled(Button)({
+  margin: '3px',
+  width: "5px",
+  padding: "5px"
+});
+
+export const ErrorMessage = styled(Button)({
+  width: "100%",
+  padding: "5px"
+});

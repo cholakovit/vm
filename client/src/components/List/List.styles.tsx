@@ -24,6 +24,8 @@ export const SelectionHolder = styled(Box)(({ theme }) => ({
   flexWrap: 'wrap',
   width: '20%',
   border: '1px solid white',
+  minHeight: "500px",
+  padding: "10px 0px",
   backgroundColor: theme.palette.primary.black,
   [theme.breakpoints.down('sm')]: {
     width: '100%',
