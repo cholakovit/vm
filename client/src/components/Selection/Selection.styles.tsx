@@ -2,16 +2,24 @@
 import { styled } from '@mui/material/styles';
 
 // MUI Elements
-import { Box, Button, Container } from '@mui/material';
+import { Box, Button, Container, TextField } from '@mui/material';
 
 export const FormHolder = styled(Container)(({ theme }) => ({
   [theme.breakpoints.down("sm")]: {
-    display: 'flex',
-    padding: "10px"
+    //display: 'flex',
+    padding: "10px",
+    width: "185%"
   },
 }));
 
 export const FieldHolder = styled(Box)(({ theme }) => ({
+  [theme.breakpoints.down("sm")]: {
+    width: "100%",
+    order: 1
+  },
+}));
+
+export const TextFieldStyle = styled(TextField)(({ theme }) => ({
   [theme.breakpoints.down("sm")]: {
     width: "100%",
     order: 1

@@ -2,10 +2,10 @@
 import React, { MutableRefObject, useRef, useState } from 'react';
 
 // MUI elements
-import { Button, TextField } from '@mui/material';
+import { TextField } from '@mui/material';
 
 // Styled elements
-import { FormHolder, DisplayHolder, DisplayTitle, AmountHolder, ButtonHolder, FieldHolder } from './Selection.styles';
+import { FormHolder, TextFieldStyle, DisplayHolder, DisplayTitle, AmountHolder, ButtonHolder, FieldHolder } from './Selection.styles';
 
 // Form
 import { useForm } from 'react-hook-form';
@@ -52,7 +52,7 @@ const Selection = () => {
       })}>
         <FormHolder>
           <FieldHolder>
-            <TextField
+            <TextFieldStyle
               id="filled-basic"
               data-testid="providerTest"
               label="Enter Amount: $..."
