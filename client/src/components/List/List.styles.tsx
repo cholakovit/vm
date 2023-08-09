@@ -26,6 +26,7 @@ export const SelectionHolder = styled(Box)(({ theme }) => ({
   border: '1px solid white',
   minHeight: "500px",
   padding: "10px 0px",
+  maxHeight: "650px",
   backgroundColor: theme.palette.primary.black,
   [theme.breakpoints.between('md', 'lg')]: {
     width: '25%', // Around 30% width for tablets
