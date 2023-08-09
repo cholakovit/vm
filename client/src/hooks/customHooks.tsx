@@ -54,7 +54,7 @@ export const useChangeEffect = (change: number, dispatch: React.Dispatch<AnyActi
       setLocalChange(change); // Store the 'change' value in the local state
 
       const timeoutId = setTimeout(() => {
-        dispatch(setAmount(0));
+        dispatch(setAmount(-change));
         setLocalChange(0); // Clear the 'localChange' state after the timeout
       }, 2000);
 
