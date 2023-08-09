@@ -1,125 +1,172 @@
 {
   "items": [
     {
-      "name": "Coffeine Free Diet Coke",
-      "price": 0.8,
-      "number": 1
-    },
-    {
+      "_id": "64d1fcc764827947082001cf",
+      "category_id": "1",
       "name": "Coke",
-      "price": 4.3,
-      "number": 2
+      "number": 2,
+      "price": 5.3
     },
     {
+      "_id": "64d1fd2e64827947082001d0",
+      "category_id": "1",
       "name": "Diet Coke",
-      "price": 5,
-      "number": 3
+      "number": 3,
+      "price": 5
     },
     {
+      "_id": "64d1fd3a64827947082001d1",
+      "category_id": "1",
+      "name": "Diet Zero Coke",
+      "number": 3,
+      "price": 4.5
+    },
+    {
+      "_id": "64d1fd4464827947082001d2",
+      "category_id": "1",
       "name": "Coke Zero",
-      "price": 4.2,
-      "number": 4
+      "number": 4,
+      "price": 4.2
     },
     {
+      "_id": "64d1fd4f64827947082001d3",
+      "category_id": "1",
       "name": "Ice Tea",
-      "price": 3,
-      "number": 5
+      "number": 5,
+      "price": 3
     },
     {
+      "_id": "64d1fda464827947082001d4",
+      "category_id": "1",
       "name": "Pepsi",
-      "price": 3.5,
-      "number": 6
+      "number": 6,
+      "price": 3.5
     },
     {
+      "_id": "64d1fdaf64827947082001d5",
+      "category_id": "2",
       "name": "Sprite",
-      "price": 4,
-      "number": 7
+      "number": 7,
+      "price": 4
     },
     {
+      "_id": "64d1fdb864827947082001d6",
+      "category_id": "2",
       "name": "Barbecue Potato Chips",
-      "price": 8,
-      "number": 8
+      "number": 8,
+      "price": 8
     },
     {
+      "_id": "64d1fdc164827947082001d7",
+      "category_id": "2",
       "name": "Bugles",
-      "price": 10,
-      "number": 9
+      "number": 9,
+      "price": 10
     },
     {
+      "_id": "64d1fdc964827947082001d8",
+      "category_id": "2",
       "name": "Doritos",
-      "price": 9,
-      "number": 10
+      "number": 10,
+      "price": 9
     },
     {
+      "_id": "64d1ff0f64827947082001d9",
+      "category_id": "3",
       "name": "Salsalitas",
-      "price": 11.2,
-      "number": 11
+      "number": 11,
+      "price": 11.2
     },
     {
+      "_id": "64d1ff1864827947082001da",
+      "category_id": "3",
       "name": "Cheezits",
-      "price": 8,
-      "number": 12
+      "number": 12,
+      "price": 8
     },
     {
+      "_id": "64d1ff2364827947082001db",
+      "category_id": "3",
       "name": "3 Musketeers",
-      "price": 6,
-      "number": 13
+      "number": 13,
+      "price": 6
     },
     {
+      "_id": "64d1ff2d64827947082001dc",
+      "category_id": "3",
       "name": "Baby Ruth",
-      "price": 7.8,
-      "number": 14
+      "number": 14,
+      "price": 7.8
     },
     {
+      "_id": "64d1ff3664827947082001dd",
+      "category_id": "3",
       "name": "M & M Mega",
-      "price": 7,
-      "number": 15
+      "number": 15,
+      "price": 7
     },
     {
+      "_id": "64d1ff4c64827947082001de",
+      "category_id": "4",
       "name": "M & M Plain",
-      "price": 8,
-      "number": 16
+      "number": 16,
+      "price": 8
     },
     {
+      "_id": "64d1ff5864827947082001df",
+      "category_id": "4",
       "name": "Snikers",
-      "price": 5,
-      "number": 17
+      "number": 17,
+      "price": 5
     },
     {
+      "_id": "64d1ff6164827947082001e0",
+      "category_id": "4",
       "name": "Skittles",
-      "price": 6,
-      "number": 18
+      "number": 18,
+      "price": 6
     },
     {
+      "_id": "64d1ff6b64827947082001e1",
+      "category_id": "4",
       "name": "Low Fat Pretzels",
-      "price": 7,
-      "number": 19
+      "number": 19,
+      "price": 7
     },
     {
+      "_id": "64d1ff7764827947082001e2",
+      "category_id": "4",
       "name": "Mango Pineapple Mix",
-      "price": 3.3,
-      "number": 20
+      "number": 20,
+      "price": 3.3
     },
     {
+      "_id": "64d1ff8664827947082001e3",
+      "category_id": "5",
       "name": "Mix and Yogurt",
-      "price": 3,
-      "number": 21
+      "number": 21,
+      "price": 3
     },
     {
+      "_id": "64d1ff8f64827947082001e4",
+      "category_id": "5",
       "name": "Munchies",
-      "price": 0.5,
-      "number": 22
+      "number": 22,
+      "price": 0.5
     },
     {
+      "_id": "64d1ff9b64827947082001e5",
+      "category_id": "5",
       "name": "Pies",
-      "price": 4,
-      "number": 23
+      "number": 23,
+      "price": 4
     },
     {
+      "_id": "64d1ffa464827947082001e6",
+      "category_id": "5",
       "name": "Cheese & Peanut Butter, Cheese",
-      "price": 12,
-      "number": 24
+      "number": 24,
+      "price": 12
     }
-    
   ]
 }
