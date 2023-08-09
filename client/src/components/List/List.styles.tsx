@@ -33,8 +33,6 @@ export const SelectionHolder = styled(Box)(({ theme }) => ({
   },
   [theme.breakpoints.between('sm', 'md')]: {
     width: '30%', // Around 30% width for tablets
-    minWidth: '30%',
-
   },
   [theme.breakpoints.down('sm')]: {
     width: '100%',

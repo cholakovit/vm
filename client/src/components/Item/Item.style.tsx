@@ -17,8 +17,11 @@ export const ItemHolder = styled(Box)(({ theme }) => ({
   [theme.breakpoints.down('sm')]: {
     width: '28%' // Set the width to 30% for smaller screens (down to sm breakpoint)
   },
+  [theme.breakpoints.between('sm', 'md')]: {
+    width: '28%', // Around 30% width for tablets
+  },
   [theme.breakpoints.between('md', 'lg')]: {
-    width: '20%' // Set the width to 25% for tablets (between md and lg breakpoints)
+    width: '21%', // Set the width to 25% for tablets (between md and lg breakpoints)
   }
 }));
 
