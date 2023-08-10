@@ -6,8 +6,11 @@
 
 The project has  two main parts. Client that is react based and server, that is go lang based.
 
+<!-- If the golang is installed and configured properly on your machine, enter the server folder from your command prompt and execute:
+`gin --appPort 3000 --immediate` command and the server should be running. -->
+
 If the golang is installed and configured properly on your machine, enter the server folder from your command prompt and execute:
-`gin --appPort 3000 --immediate` command and the server should be running.
+`go run main.go` command and the server should be running.
 
 If the nodejs and react are installed properly on your machine, enter the client folder from your command prompt and execute:
 `npm i` - to install all the needed packages and then `npm run dev`, to run the client side project. 
