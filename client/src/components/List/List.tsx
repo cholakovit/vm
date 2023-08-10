@@ -8,13 +8,14 @@ import Skeletons from '../Skeletons/Skeletons';
 import Item from '../Item/Item';
 import Selection from '../Selection/Selection';
 import VendingButtons from '../VendingButtons/VendingButtons';
+import AlertMessage from '../Alert/Alert';
 
 // Custom Hook
 import { useEffectDispatchItems, useVendingItems } from '../../hooks/customHooks';
 
+// Redux
 import { useAppSelector } from '../../store/hooks';
 import { getItems, getItemsError } from '../../store/dataSlice';
-import AlertMessage from '../Alert/Alert';
 
 const List = () => {
 

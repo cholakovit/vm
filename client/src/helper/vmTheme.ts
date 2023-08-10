@@ -1,5 +1,3 @@
-// vmTheme.ts
-
 // Styled Elements
 import { createTheme } from "@mui/material/styles";
 
@@ -25,7 +23,7 @@ export const vmTheme = (mode: PaletteMode) => {
                 mode,
                 ...(mode === "light"
                   ? {
-                      backgroundColor: colors.orange[800],
+                      backgroundColor: colors.grey[100],
                     }
                   : {
                       backgroundColor: colors.orange[900],
@@ -36,9 +34,9 @@ export const vmTheme = (mode: PaletteMode) => {
         },
         palette: {
           primary: {
-            main: mode === "light" ? colors.orange[800] : colors.orange[900],
-            black: mode === "light" ? colors.grey[800] : colors.grey[900],
-            white: mode === "light" ? colors.grey[100] : colors.grey[600],
+            main: mode === "light" ? colors.grey[600] : colors.orange[900],
+            black: mode === "light" ? colors.grey[400] : colors.grey[900],
+            white: mode === "light" ? colors.grey[800] : colors.grey[600],
             iconColor: mode === "light" ? colors.grey[900] : colors.grey[100],
           },
           mode, // Add the mode property to the palette object

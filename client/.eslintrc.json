@@ -94,6 +94,7 @@
          "react/jsx-key": "off",
          "no-restricted-globals":"off",
          "@typescript-eslint/ban-types":"off",
-         "object-shorthand":"off"
+         "object-shorthand":"off",
+         "no-useless-catch": "off"
     }
 }

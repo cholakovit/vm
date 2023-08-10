@@ -23,7 +23,7 @@ export const SelectionHolder = styled(Box)(({ theme }) => ({
   display: 'flex',
   flexWrap: 'wrap',
   width: '20%',
-  border: '1px solid white',
+  border: '1px solid' + theme.palette.primary.white,
   minHeight: "500px",
   padding: "10px 0px",
   maxHeight: "650px",

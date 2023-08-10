@@ -2,16 +2,24 @@ package routes
 
 import (
 	"items/handlers"
-	"items/middleware"
 
-	"github.com/gin-gonic/gin"
+	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
+	//"github.com/go-playground/validator/v10"
 )
 
-func ItemRoutes(router *gin.Engine) {
-	router.Use(middleware.CORSMiddleware())
-	router.GET("/items", handlers.GetItems)
-	router.POST("/item", handlers.CreateItem)
-	router.GET("/item/:id", handlers.GetItemById)
-	router.PATCH("/item/:id", handlers.UpdateItemById)
-	router.DELETE("/item/:id", handlers.DeleteProductById)
+func ItemRoutes(app *fiber.App) {
+
+	app.Use(cors.New(cors.Config{
+		AllowOrigins: "http://localhost:5173",
+		AllowHeaders: "Origin, Content-Type, Accept",
+	}))
+
+	//app.Use(validator.New())
+
+	app.Get("/items", handlers.GetItems)
+	app.Post("/item", handlers.CreateItem)
+	app.Get("/item/:id", handlers.GetItemById)
+	app.Patch("/item/:id", handlers.UpdateItemById)
+	app.Delete("/item/:id", handlers.DeleteProductById)
 }

@@ -4,78 +4,98 @@ import (
 	"items/models"
 	"items/queries"
 	vs "items/validationMessages"
-	"net/http"
+	"log"
 
 	"sync"
 
-	"github.com/gin-gonic/gin"
+	"github.com/go-playground/validator/v10"
+	"github.com/gofiber/fiber/v2"
 )
 
 var (
 	item		*models.Item
 	wg 				sync.WaitGroup
+	validate *validator.Validate
 )
 
-func GetItems(c *gin.Context) {
-	items, err := queries.GetItemsQuery()
-	if err != nil {
-		c.JSON(http.StatusBadGateway, gin.H{"message": err.Error()})
-		return
-	}
-	c.JSON(http.StatusOK, items)
+// special function in Go that is automatically called before the main() function. 
+// It's used to perform initialization tasks before your program starts running.
+func init() {
+	validate = validator.New()
 }
 
-func CreateItem(c *gin.Context) {
-	if err := c.ShouldBindJSON(&item); err != nil {
-		errMsg := vs.ProductMessageValidate(err)
-		c.JSON(http.StatusBadRequest, gin.H{"message": errMsg})
-		return
+func GetItems(c *fiber.Ctx) error {
+
+	items, err := queries.GetItemsQuery()
+	if err != nil {
+		return c.Status(fiber.StatusBadGateway).JSON(fiber.Map{"message": err.Error()})
 	}
+	return c.Status(fiber.StatusOK).JSON(items)
+}
+
+func CreateItem(c *fiber.Ctx) error {
+	// Bind and validate the request body
+	if err := c.BodyParser(&item); err != nil {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"message": err.Error()})
+	}
+
+	log.Println("TEST 1")
+
+	// Validate the item
+	if msgErr := validateItem(item); msgErr != "" {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"message": msgErr})
+	}
+
+	log.Println("TEST 2")
 
 	err := queries.CreateItemQuery(item)
 	if err != nil {
-		c.JSON(http.StatusBadGateway, gin.H{ "message": err.Error() })
-		return
+		return c.Status(fiber.StatusBadGateway).JSON(fiber.Map{"message": err.Error()})
 	}
 
-	c.JSON(http.StatusOK, gin.H{"message": "create item success"})
+	return c.Status(fiber.StatusOK).JSON(fiber.Map{"message": "create item success"})
 }
 
-func GetItemById(c *gin.Context) {
-	id := c.Param("id")
+func GetItemById(c *fiber.Ctx) error {
+	id := c.Params("id")
 	itemById, err := queries.GetItemByIdQuery(&id)
 	if err != nil {
-		c.JSON(http.StatusBadGateway, gin.H{"message": err.Error()})
-		return
+		return c.Status(fiber.StatusBadGateway).JSON(fiber.Map{"message": err.Error()})
 	}
-	c.JSON(http.StatusOK, itemById)
+	return c.Status(fiber.StatusOK).JSON(itemById)
 }
 
-func UpdateItemById(c *gin.Context) {
-	id := c.Param("id")
-	if err := c.ShouldBindJSON(&item); err != nil {
+func UpdateItemById(c *fiber.Ctx) error {
+	id := c.Params("id")
+
+	if err := c.BodyParser(&item); err != nil {
 		errMsg := vs.ProductMessageValidate(err)
-		c.JSON(http.StatusBadRequest, gin.H{"message": errMsg})
-		return
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"message": errMsg})
 	}
-		
+
 	err := queries.UpdateItemByIdQuery(&id, item)
 	if err != nil {
-		c.JSON(http.StatusBadGateway, gin.H{ "message": err.Error() })
-		return
-	}	
+		return c.Status(fiber.StatusBadGateway).JSON(fiber.Map{"message": err.Error()})
+	}
 
-	c.JSON(http.StatusOK, gin.H{"message": "update item success"})
+	return c.Status(fiber.StatusOK).JSON(fiber.Map{"message": "update item success"})
 }
 
-func DeleteProductById(c *gin.Context) {
-	id := c.Param("id")
+func DeleteProductById(c *fiber.Ctx) error {
+	id := c.Params("id")
 
 	err := queries.DeleteItemByIdQuery(&id)
 	if err != nil {
-		c.JSON(http.StatusBadGateway, gin.H{ "message": err.Error() })
-		return
+		return c.Status(fiber.StatusBadGateway).JSON(fiber.Map{"message": err.Error()})
 	}
-	
-	c.JSON(http.StatusOK, gin.H{"message": "delete item success"})
+
+	return c.Status(fiber.StatusOK).JSON(fiber.Map{"message": "delete item success"})
+}
+
+func validateItem(item *models.Item) string {
+	if err := validate.Struct(item); err != nil {
+		msgErr := vs.ProductMessageValidate(err)
+		return msgErr
+	}
+	return ""
 }

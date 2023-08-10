@@ -32,11 +32,13 @@ export const ButtonSection = styled(Box)({
   padding: "3px"
 });
 
-export const ButtonHolder = styled(Button)({
+export const ButtonHolder = styled(Button)(({ theme }) => ({
   margin: '3px',
   width: "5px",
-  padding: "5px"
-});
+  padding: "5px",
+  color: theme.palette.primary.white,
+  border: "1px solid " + theme.palette.primary.white,
+}));
 
 export const ErrorMessage = styled(Button)({
   width: "100%",

@@ -12,11 +12,13 @@ export const DisplayAmountHolder = styled(Box)(({ theme }) => ({
 
 export const AmountHolder = styled(Box)(({ theme }) => ({
   //border: "1px solid green",
+  color: theme.palette.primary.black,
   [theme.breakpoints.down('sm')]: {}
 }));
 
 export const ChangeHolder = styled(Box)(({ theme }) => ({
   //border: "1px solid yellow",
+  color: theme.palette.primary.black,
   [theme.breakpoints.down('sm')]: {}
 }));
 

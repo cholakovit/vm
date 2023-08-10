@@ -10,7 +10,7 @@ export const ItemHolder = styled(Box)(({ theme }) => ({
   display: 'flex',
   backgroundColor: theme.palette.primary.black,
   width: '14%',
-  border: '1px solid white',
+  border: '1px solid' + theme.palette.primary.white,
   marginRight: '20px',
   overflow: 'hidden',
   maxHeight:"120px",

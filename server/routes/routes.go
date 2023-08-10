@@ -4,18 +4,21 @@ import (
 	"log"
 	"os"
 
-	"github.com/gin-gonic/gin"
+	"github.com/gofiber/fiber/v2"
 )
 
 func InitRoutes() {
-	router := gin.Default()
+	app := fiber.New()
 
-	ItemRoutes(router)
+	ItemRoutes(app)
 
 	port := os.Getenv("PORT")
 	if port == "" {
 		log.Fatal("PORT environment variable is not set")
 	}
 
-	router.Run("localhost:" + port)
+	err := app.Listen(":" + port)
+	if err != nil {
+		log.Fatal(err)
+	}
 }

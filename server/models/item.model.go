@@ -5,9 +5,9 @@ import (
 )
 
 type Item struct {
-	ID     				primitive.ObjectID `bson:"_id,omitempty"`
-	Name   				string             `json:"name" binding:"required,min=2" 			bson:"name"`
-	Number 				float32            `json:"number"															bson:"number"`
-	Price  				float64            `json:"price" binding:"required"						bson:"price"`
-	Category_id 	string						 `json:"category_id" binding:"required"			bson:"category_id"`
+	ID          primitive.ObjectID `bson:"_id,omitempty"`
+	Name        string             `json:"name" validate:"required,min=2"`
+	Number      float32            `json:"number"`
+	Price       float64            `json:"price" validate:"required"`
+	Category_id string             `json:"category_id" validate:"required"`
 }
