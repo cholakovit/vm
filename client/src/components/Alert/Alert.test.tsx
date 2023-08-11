@@ -1,42 +1,37 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, act, waitFor } from '@testing-library/react';
+
 import AlertMessage from './Alert';
 
-// jest.mock('./Alert.styles', () => ({
-//   AlertBox: jest.fn((props) => <div {...props} />),
-// }));
+// Mocking the setTimeout function for Jest
+jest.useFakeTimers();
 
-describe('AlertMessage', () => {
-  it('should render the AlertBox when displayAlert is truthy', () => {
-    // Set up the props for the component
-    const alert = 'This is a test alert.';
-    const type = 'info';
+describe('AlertMessage Component', () => {
+  it('should display the alert message and then disappear', () => {
+    const initialAlert = 'Test Alert Message';
+    const type = 'success'; // Replace with actual type value
 
-    // Render the component
-    render(<AlertMessage alert={alert} type={type} />);
+    render(<AlertMessage alert={initialAlert} type={type} />);
 
-    // Expect the AlertBox component to be rendered with the correct props
-    const alertBoxElement = screen.getByTestId('alert');
-    expect(alertBoxElement).toBeInTheDocument();
-    //expect(alertBoxElement).toHaveAttribute('severity', type);
-    expect(alertBoxElement).toHaveTextContent(alert);
+    // Ensure the Alert is initially displayed
+    const alertElement = screen.getByTestId('alert');
+    expect(alertElement).toBeInTheDocument();
+
+    // Fast-forward the timers by 3000ms to simulate the timeout
+    act(() => {
+      jest.advanceTimersByTime(3000);
+    });
+
+    // Ensure the Alert is no longer in the document
+    expect(screen.queryByTestId('alert')).not.toBeInTheDocument();
   });
 
-  it('should not render the AlertBox when displayAlert is falsy', () => {
-    // Mock the useAlertWithTimeout hook to return a falsy value
-    jest.mock('../../hooks/customHooks', () => ({
-      useAlertWithTimeout: jest.fn(() => null),
-    }));
+  it('should not render when no alert is provided', () => {
+    const type = 'error'; // Replace with your actual type value
 
-    // Set up the props for the component
-    const alert = 'This is a test alert.';
-    const type = 'info';
+    render(<AlertMessage alert={null} type={type} />);
 
-    // Render the component
-    render(<AlertMessage alert={alert} type={type} />);
-
-    // Expect the AlertBox component not to be rendered
-    const alertBoxElement = screen.queryByTestId('alert');
-    //expect(alertBoxElement).toBeNull();
+    // Ensure the Alert is not rendered
+    expect(screen.queryByTestId('alert')).not.toBeInTheDocument();
   });
 });

@@ -2,34 +2,42 @@
 import React, { useState } from 'react';
 
 // Styled components
-import { VendingButtonsHolder, ButtonHolder, ButtonSection, DisplayItemNumber, DisplayNumberItemTitle, DisplayedConcatenatedNumber, ErrorMessage } from './VendingButtons.style';
+import {
+  VendingButtonsHolder,
+  ButtonHolder,
+  ButtonSection,
+  DisplayItemNumber,
+  DisplayNumberItemTitle,
+  DisplayedConcatenatedNumber,
+  ErrorMessage
+} from './VendingButtons.style';
 
 // Redux
 import { useSelector } from 'react-redux';
 
-// Types
-import type { RootState } from '../../types';
-
-// Components
-import Alert from '../Alert/Alert';
-
 // Constants
 import { ENTER, RESET } from '../../constants/common';
-import { useAmountEffect, useConcatenatedNumber, useEnterClick, useEnterClickedEffect } from '../../hooks/customHooks';
-import AlertMessage from '../Alert/Alert';
+
+// Custom hooks
+import {
+  useAmountEffect,
+  useConcatenatedNumber,
+  useEnterClick,
+  useEnterClickedEffect
+} from './VendingButtons.hooks';
+
+// Types
+import { RootState } from '../../store/store.types';
 
 const VendingButtons = () => {
   const [enterClicked, setEnterClicked] = useState<boolean>(true);
 
   const amount = useSelector((state: RootState) => state.amount.value);
 
-  const {
-    displayedConcatenatedNumber,
-    handleButtonClick,
-    handleResetClick,
-  } = useConcatenatedNumber();
+  const { displayedConcatenatedNumber, handleButtonClick, handleResetClick } =
+    useConcatenatedNumber();
 
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [errorMessage] = useState<string | null>(null);
 
   // Use the custom hook for handling Enter click
   const { handleEnterClick } = useEnterClick();
@@ -38,10 +46,14 @@ const VendingButtons = () => {
   const { enterClicked: amountEnterClicked } = useAmountEffect(amount);
 
   // Use the custom hook for handling the effects of amountEnterClicked change
-  useEnterClickedEffect(amountEnterClicked, setEnterClicked, handleResetClick);
+  useEnterClickedEffect({
+    amountEnterClicked,
+    setEnterClicked,
+    handleResetClick
+  });
 
   return (
-    <VendingButtonsHolder>
+    <VendingButtonsHolder data-testid="vendingButtonsHolder">
       <ErrorMessage>{errorMessage}</ErrorMessage>
 
       <DisplayItemNumber>
@@ -78,9 +90,7 @@ const VendingButtons = () => {
         >
           {ENTER}
         </ButtonHolder>
-
       </ButtonSection>
-
     </VendingButtonsHolder>
   );
 };

@@ -1,4 +1,5 @@
-import { PaletteOptions, Theme, ThemeOptions } from "@mui/material/styles";
+import { PaletteMode } from "@mui/material";
+import { PaletteOptions } from "@mui/material/styles";
 
 declare module "@mui/material/styles" {
   interface PaletteColor {
@@ -39,4 +40,21 @@ declare module "@mui/material/styles" {
     palette?: PaletteOptions;
     // Add theme options here, if any
   }
+}
+
+export interface ColorModeContextValue {}
+
+// Define a custom palette interface
+export interface CustomPalette {
+  primary: {
+    main: string;
+    black: string;
+    white: string;
+    iconColor: string;
+  };
+  mode: PaletteMode;
+}
+
+export interface ColorModeContextType {
+  toggleColorMode: () => void;
 }

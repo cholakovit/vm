@@ -1,23 +1,32 @@
-// dataSlice.js
 import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
 
 //import data from '../data/db.json';
 import { FIALED, IDLE, LOADING, SUCCESS } from '../constants/common';
-import { InitialState } from '../types';
+
+// Types
+import { InitialState } from './store.types';
+import { RootState } from './store';
+
 
 const initialState: InitialState = {
   items: [],
   status: IDLE, //'idle' | 'loading' | 'succeeded' | 'failed'
   allItemsStatus: IDLE, //'idle' | 'loading' | 'succeeded' | 'failed'
-  allItemsError: null,
-  itemsError: null
+  itemsError: ""
 }
 
 export const selectItems = createAsyncThunk('items/items', async () => {
   try {
-    const response = await axios.get('http://localhost:3000/items');
-    return response.data;
+    const apiUrl = process.env.REACT_APP_API_URL
+    if (apiUrl) {
+      const response = await fetch(apiUrl);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const data = await response.json();
+      return data;
+    } 
   } catch (error) {
     throw error;
   }
@@ -39,17 +48,14 @@ const dataSlice = createSlice({
     })
     .addCase(selectItems.rejected, (state, action: any) => {
         state.status = FIALED
-        state.allItemsError = action.error.message
+        state.itemsError = action.error.message
     })
   }
 });
 
-export const getStatus = (state: any) => state.data.status
-export const getItems = (state: any) => state.data.items
-export const getItemsError = (state: any) => state.data.itemsError
-export const getFilteredItems = (state: any) => state.data.filtered
-
-export const getFilteredItemsMsg = (state: any) => state.data.filteredMsg
+export const getStatus = (state: RootState) => state.data.status
+export const getItems = (state: RootState) => state.data.items
+export const getItemsError = (state: RootState) => state.data.itemsError
 
 export default dataSlice.reducer;
 

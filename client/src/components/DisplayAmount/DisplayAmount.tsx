@@ -3,9 +3,7 @@ import React, { useState } from 'react';
 
 // Redux
 import { useDispatch, useSelector } from 'react-redux';
-
-// Types
-import type { RootState } from '../../types';
+import { AnyAction } from '@reduxjs/toolkit';
 
 // Styles
 import { AmountHolder, ChangeHolder, DisplayAmountHolder, ErrorMessage } from './DisplayAmount.style';
@@ -14,8 +12,11 @@ import { AmountHolder, ChangeHolder, DisplayAmountHolder, ErrorMessage } from '.
 import { AMOUNT, CHANGE } from '../../constants/common';
 
 // Custom hooks
-import { useChangeEffect, useFlagEffect } from '../../hooks/customHooks';
-import { AnyAction } from '@reduxjs/toolkit';
+import { useChangeEffect, useFlagEffect } from './DisplayAmount.hooks';
+
+// Types 
+import { RootState } from '../../store/store.types';
+
 
 const DisplayAmount = () => {
   const { value, flag, errorMessage } = useSelector((state: RootState) => state.amount);
@@ -24,10 +25,17 @@ const DisplayAmount = () => {
   const dispatch: React.Dispatch<AnyAction> = useDispatch();
 
   // custom hook for the change
-  useFlagEffect(flag, value, setChange);
+  useFlagEffect({
+    flag,
+    value,
+    callback: setChange
+  })
 
   // Use the custom hook and get the updated 'change' state
-  const updatedChange: number = useChangeEffect(change, dispatch);
+  const updatedChange: number = useChangeEffect({ 
+    change,
+    dispatch
+   })
 
   return (
     <DisplayAmountHolder>

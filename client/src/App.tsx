@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { ColorModeContext } from './helper/Context'
 import { ThemeProvider } from '@mui/material/styles'
 import { CssBaseline, PaletteMode } from '@mui/material'
-import { vmTheme } from './helper/vmTheme'
+import { useVmTheme } from './helper/vmTheme'
 
 // Page
 import Home from './pages/Home'
@@ -17,7 +17,7 @@ import Home from './pages/Home'
 import Header from './components/Header/Header'
 
 // Types
-import { ColorModeContextType } from './types'
+import { ColorModeContextType } from './helper/vmTheme.d'
 
 // Constants
 import { DARK, LIGHT } from './constants/common'
@@ -34,7 +34,7 @@ const App = (): JSX.Element => {
       }
   }),[])
   
-  const theme = vmTheme(mode)
+  const theme = useVmTheme(mode)
 
   return (
     <ColorModeContext.Provider value={colorMode}>

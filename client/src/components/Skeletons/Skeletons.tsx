@@ -5,10 +5,7 @@ import React, { FC } from "react";
 import { SkeletonBox } from "./Skeletons.styles";
 
 // MUI Elements
-import { Skeleton } from "@mui/material";
-
-// Types
-import type { SkeletonProps } from '../../types';
+import { Skeleton } from "@mui/material"; 
 
 const Skeletons: FC<SkeletonProps> = ({ flag, width, height }) => {
 

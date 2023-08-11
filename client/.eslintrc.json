@@ -11,8 +11,8 @@
         //"airbnb-typescript",
         "plugin:import/typescript",
         "plugin:react/recommended",
-        "plugin:@typescript-eslint/recommended",
-        "plugin:prettier/recommended"
+        "plugin:@typescript-eslint/recommended"
+        //"plugin:prettier/recommended"
     ],
     "overrides": [
     ],
@@ -29,8 +29,8 @@
     "plugins": [
         "react",
         "@typescript-eslint",
-        "exclude-nunjuck-tags",
-        "prettier"
+        "exclude-nunjuck-tags"
+        //"prettier"
     ],
     "parser": "@babel/eslint-parser",
     "rules": {
@@ -95,6 +95,10 @@
          "no-restricted-globals":"off",
          "@typescript-eslint/ban-types":"off",
          "object-shorthand":"off",
-         "no-useless-catch": "off"
+         "no-useless-catch": "off",
+         "no-multiple-empty-lines": "off",
+         "react-hooks/exhaustive-deps": "off",
+         "react/jsx-no-undef": "off",
+         "import/no-cycle": "off"
     }
 }

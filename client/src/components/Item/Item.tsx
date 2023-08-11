@@ -1,8 +1,5 @@
 // React Elements
-import React, { FC } from 'react';
-
-// Types
-import type { ItemsProps } from '../../types';
+import React from 'react';
 
 // Styled Elements
 import { ItemHolder, Content, NameHolder, PriceHolder } from './Item.style';
@@ -10,7 +7,7 @@ import { ItemHolder, Content, NameHolder, PriceHolder } from './Item.style';
 // Constants
 import { NUMBER } from '../../constants/common';
 
-const Item: FC<ItemsProps> = ({ item, id }) => {
+const Item = ({ item, id }: { item: any; id: number }) => {
   return (
     <ItemHolder role="provider" key={id}>
       <Content>

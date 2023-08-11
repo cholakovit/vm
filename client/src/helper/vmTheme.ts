@@ -1,16 +1,9 @@
-// Styled Elements
 import { createTheme } from "@mui/material/styles";
-
-// Hooks
 import { useMemo } from "react";
-
-// Colors
 import { PaletteMode, colors } from "@mui/material";
+import { CustomPalette } from "./vmTheme.d";
 
-// Types
-import { CustomPalette } from "../types";
-
-export const vmTheme = (mode: PaletteMode) => {
+export const useVmTheme = (mode: PaletteMode) => {
   // memoizing the result so it won't calculate every time
   const theme = useMemo(
     () =>

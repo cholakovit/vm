@@ -13,15 +13,15 @@ export const ItemHolder = styled(Box)(({ theme }) => ({
   border: '1px solid' + theme.palette.primary.white,
   marginRight: '20px',
   overflow: 'hidden',
-  maxHeight:"120px",
+  maxHeight: '120px',
   [theme.breakpoints.down('sm')]: {
     width: '28%' // Set the width to 30% for smaller screens (down to sm breakpoint)
   },
   [theme.breakpoints.between('sm', 'md')]: {
-    width: '28%', // Around 30% width for tablets
+    width: '28%' // Around 30% width for tablets
   },
   [theme.breakpoints.between('md', 'lg')]: {
-    width: '21%', // Set the width to 25% for tablets (between md and lg breakpoints)
+    width: '21%' // Set the width to 25% for tablets (between md and lg breakpoints)
   }
 }));
 
