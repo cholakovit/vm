@@ -1,12 +1,11 @@
 import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 //import data from '../data/db.json';
-import { FIALED, IDLE, LOADING, SUCCESS } from '../constants/common';
+import { DATA, FIALED, IDLE, LOADING, NETWORK_RESPONS_NOT_OK, SUCCESS } from '../constants/common';
 
 // Types
 import { InitialState } from './store.types';
-import { RootState } from './store';
-
+import { RootState } from './store.types';
 
 const initialState: InitialState = {
   items: [],
@@ -21,7 +20,7 @@ export const selectItems = createAsyncThunk('items/items', async () => {
     if (apiUrl) {
       const response = await fetch(apiUrl);
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        throw new Error(NETWORK_RESPONS_NOT_OK);
       }
 
       const data = await response.json();
@@ -33,7 +32,7 @@ export const selectItems = createAsyncThunk('items/items', async () => {
 })
 
 const dataSlice = createSlice({
-  name: 'data',
+  name: DATA,
   //initialState: data.items, // Set the initial state from the db.json file
   initialState: initialState, // Set the initial state from the GO API file
   reducers: {},
@@ -58,4 +57,3 @@ export const getItems = (state: RootState) => state.data.items
 export const getItemsError = (state: RootState) => state.data.itemsError
 
 export default dataSlice.reducer;
-

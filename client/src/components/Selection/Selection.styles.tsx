@@ -6,7 +6,6 @@ import { Box, Button, Container, TextField } from '@mui/material';
 
 export const FormHolder = styled(Container)(({ theme }) => ({
   [theme.breakpoints.down("sm")]: {
-    //display: 'flex',
     padding: "10px",
     width: "185%"
   },

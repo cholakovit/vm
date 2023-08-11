@@ -12,9 +12,3 @@ export interface ItemProps {
   price: number;
   number: number;
 }
-
-// interface Item {
-//   name: string
-//   price: number
-//   number: number
-// }

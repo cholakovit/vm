@@ -1,5 +1,12 @@
 import store from "./store";
 
+// Define the state type
+interface AmountState {
+  value: number;
+  flag: number;
+  errorMessage: string; // New property to store the error message
+}
+
 interface InitialState {
   items: any,
   status: string
@@ -14,4 +21,5 @@ interface AppStore {
 }
 
 // Define the RootState type representing the entire Redux state tree
-export type RootState = ReturnType<typeof store.getState>;
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch

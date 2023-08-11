@@ -6,5 +6,4 @@ import { Box } from "@mui/material";
 
 export const SkeletonBox = styled(Box)({
   margin: "10px 10px",
-
 });

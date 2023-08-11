@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { AppDispatch } from "../../store/store";
+import { AppDispatch } from "../../store/store.types";
 import { getStatus, selectItems } from "../../store/dataSlice";
 import { IDLE } from "../../constants/common";
 import { VendingItemsHookResult } from "./List.types";

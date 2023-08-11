@@ -1,7 +1,6 @@
 import { styled } from "@mui/material/styles";
 import { Box } from '@mui/material';
 
-
 export const DisplayAmountHolder = styled(Box)(({ theme }) => ({
   overflow: 'hidden',
   width: '100%',
@@ -11,13 +10,11 @@ export const DisplayAmountHolder = styled(Box)(({ theme }) => ({
 }));
 
 export const AmountHolder = styled(Box)(({ theme }) => ({
-  //border: "1px solid green",
   color: theme.palette.primary.black,
   [theme.breakpoints.down('sm')]: {}
 }));
 
 export const ChangeHolder = styled(Box)(({ theme }) => ({
-  //border: "1px solid yellow",
   color: theme.palette.primary.black,
   [theme.breakpoints.down('sm')]: {}
 }));

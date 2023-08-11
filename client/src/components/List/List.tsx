@@ -1,5 +1,3 @@
-import { Suspense } from 'react';
-
 // Styled Elements
 import { ItemContainer, ItemsHolder, SelectionHolder } from './List.styles';
 
@@ -16,8 +14,10 @@ import { useEffectDispatchItems, useVendingItems } from './List.hooks';
 // Redux
 import { useAppSelector } from '../../store/hooks';
 import { getItems, getItemsError } from '../../store/dataSlice';
+
 import ErrorBoundary from '../../ErrorBoundaries';
 import { ItemsProps } from '../Item/Item.types';
+import { Suspense } from 'react';
 
 const List = () => {
   // By using the custom hooks, I have encapsulated the specific logic for form submission and input change in separate hooks,

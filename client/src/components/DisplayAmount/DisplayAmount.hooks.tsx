@@ -26,5 +26,5 @@ export const useChangeEffect = ({ change, dispatch }: ChangeEffectHookProps): nu
     }
   }, [change, dispatch]);
 
-  return localChange; // Return the local 'change' state back to the component
+  return localChange;
 };

@@ -11,7 +11,6 @@ const Skeletons: FC<SkeletonProps> = ({ flag, width, height }) => {
 
   const items = [];
   for (let i = 0; i < 24; i++) {
-    // Replace this with the actual content you want to render in the loop
     items.push(
       <SkeletonBox data-testid='skeletons'>
         <Skeleton

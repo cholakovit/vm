@@ -1,8 +1,10 @@
+// Styled Elements
 import { styled } from '@mui/material/styles';
+
+// MUI Elements
 import { Box, Button } from "@mui/material";
 
 export const VendingButtonsHolder = styled(Box)(({ theme }) => ({
-  //border: "1px solid red",
   margin: "0 5px"
 }));
 

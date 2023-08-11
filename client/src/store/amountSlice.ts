@@ -1,14 +1,13 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
-// Define the state type
-interface AmountState {
-  value: number;
-  flag: number;
-  errorMessage: string; // New property to store the error message
-}
+// Interface
+import { AmountState } from './store.types';
+
+// Constants
+import { ADD_MORE_FUNDS, AMOUNT_SLICE } from '../constants/common';
 
 const amountSlice = createSlice({
-  name: 'amount',
+  name: AMOUNT_SLICE,
   initialState: { value: 0, flag: 0, errorMessage: "" } as AmountState, // Set the initial state with the correct structure
   reducers: {
     setAmount: (state, action: PayloadAction<number>) => {
@@ -23,7 +22,7 @@ const amountSlice = createSlice({
       if (state.value < itemPrice) {
         return {
           ...state,
-          errorMessage: "Add more funds.",
+          errorMessage: ADD_MORE_FUNDS,
         };
       }
 

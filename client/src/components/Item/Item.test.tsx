@@ -17,10 +17,4 @@ describe('Item component', () => {
     expect(itemName).toBeInTheDocument();
     expect(itemPrice).toBeInTheDocument();
   });
-
-  it('renders item number', () => {
-    const { getByText } = render(<Item item={mockItem} id={2} />);
-    //const itemNumber = getByText(`${mockItem.number}`);
-    //expect(itemNumber).toBeInTheDocument();
-  });
 });
