@@ -1,4 +1,3 @@
-import React from 'react';
 import { render } from '@testing-library/react';
 import Skeletons from './Skeletons';
 
@@ -11,7 +10,7 @@ describe('Skeletons component', () => {
 
   it('renders a single skeleton when flag is 2', () => {
     const { getByTestId } = render(<Skeletons flag={2} width={210} height={370} />);
-    const skeleton = getByTestId('skeletons');
+    const skeleton = getByTestId('skeletons') as HTMLElement;
     expect(skeleton).toBeInTheDocument();
   });
 });

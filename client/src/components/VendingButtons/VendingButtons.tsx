@@ -77,6 +77,7 @@ const VendingButtons = () => {
         <ButtonHolder
           variant="outlined"
           size="small"
+          data-testid="resetButton"
           onClick={() => handleResetClick()}
           disabled={enterClicked} // Disable the button if "Enter" is clicked
         >
@@ -87,6 +88,7 @@ const VendingButtons = () => {
           variant="outlined"
           size="small"
           onClick={() => handleEnterClick(displayedConcatenatedNumber)}
+          data-testid="enterButton"
           disabled={enterClicked} // Disable the button if "Enter" is clicked
         >
           {ENTER}

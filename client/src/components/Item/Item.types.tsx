@@ -12,3 +12,8 @@ export interface ItemProps {
   price: number;
   number: number;
 }
+
+export interface ButtonElements {
+  buttonElReset: HTMLElement;
+  buttonElEnter: HTMLElement;
+}

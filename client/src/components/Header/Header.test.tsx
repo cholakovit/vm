@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import Header from './Header';
 
@@ -15,7 +14,7 @@ describe('Header component', () => {
     const { getByTestId } = render(<Header />);
 
     // Find the switch button by test ID
-    const switchButton = getByTestId('button');
+    const switchButton = getByTestId('button') as HTMLElement;
 
     // Check if the switch button is rendered
     expect(switchButton).toBeInTheDocument();
@@ -27,3 +26,5 @@ describe('Header component', () => {
     //expect(mockToggleColorMode).toHaveBeenCalled();
   });
 });
+
+

@@ -21,7 +21,13 @@ import DisplayAmount from '../DisplayAmount/DisplayAmount';
 import { AnyAction } from '@reduxjs/toolkit';
 
 // Constants
-import { DISPLAY_AMOUNT_CHANGE, ENTER, ENTER_AMOUNT, REQUIRED_INSERT } from '../../constants/common';
+import {
+  DISPLAY_AMOUNT_CHANGE,
+  ENTER,
+  ENTER_AMOUNT,
+  FIELD_HOLDER_TEST,
+  REQUIRED_INSERT
+} from '../../constants/common';
 
 // Custom hooks
 import { useInputChangeHandler, useSubmitHandler } from './Selection.hooks';
@@ -63,7 +69,7 @@ const Selection = () => {
         <FieldHolder>
           <TextFieldStyle
             id="filled-basic"
-            data-testid="providerTest"
+            data-testid={FIELD_HOLDER_TEST}
             label={ENTER_AMOUNT}
             variant="filled"
             inputRef={amountRef}
@@ -74,7 +80,11 @@ const Selection = () => {
           />
         </FieldHolder>
 
-        <ButtonHolder variant="contained" disabled={!submitAllowed} type="submit">
+        <ButtonHolder
+          variant="contained"
+          disabled={!submitAllowed}
+          type="submit"
+          data-testid="formButton">
           {ENTER}
         </ButtonHolder>
 

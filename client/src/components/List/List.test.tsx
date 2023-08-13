@@ -11,7 +11,7 @@ describe('List component', () => {
         <List />
       </Provider>
     );
-    const itemContainerElement = getByTestId('ItemContainer');
+    const itemContainerElement = getByTestId('ItemContainer') as HTMLElement;
 
     expect(itemContainerElement).toBeInTheDocument();
   });

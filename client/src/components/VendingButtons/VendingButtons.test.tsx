@@ -2,7 +2,8 @@ import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux'; // Import the Provider component
 import store from '../../store/store'; // Import your Redux store
 import VendingButtons from './VendingButtons';
-import { DISPLAY_ITEM_NUMBER, ENTER, RESET } from '../../constants/common';
+import { DISPLAY_ITEM_NUMBER, NUMBERS_ARRAY_0_TO_9 } from '../../constants/common';
+import { assertButtonResetEnterDisabled } from '../../testUtils';
 
 test("Vending Buttons exist ?", () => {
   render(
@@ -11,25 +12,17 @@ test("Vending Buttons exist ?", () => {
     </Provider>
   )
 
-  const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-
-  for(const number of numbers) {
-    const buttonEl = screen.getByRole('button', { name: number })
+  for(const number of NUMBERS_ARRAY_0_TO_9) {
+    const buttonEl = screen.getByRole('button', { name: number }) as HTMLElement
     expect(buttonEl).toBeInTheDocument()
     expect(buttonEl).toBeDisabled()
   }
 
-  const buttonElReset = screen.getByRole('button', { name: new RegExp(RESET, 'i') }) 
-  expect(buttonElReset).toBeInTheDocument()
-  expect(buttonElReset).toBeDisabled()
+  assertButtonResetEnterDisabled();
 
-  const buttonElEnter = screen.getByRole('button', { name: new RegExp(ENTER, 'i') }) 
-  expect(buttonElEnter).toBeInTheDocument()
-  expect(buttonElEnter).toBeDisabled()
-
-  const displayItemNumberTitle = screen.getByText(new RegExp(DISPLAY_ITEM_NUMBER, 'i'));
+  const displayItemNumberTitle = screen.getByText(new RegExp(DISPLAY_ITEM_NUMBER, 'i')) as HTMLElement;
   expect(displayItemNumberTitle).toBeInTheDocument()
 
-  const dcn = screen.getByRole('dcn')
+  const dcn = screen.getByRole('dcn') as HTMLElement
   expect(dcn).toHaveTextContent('0'); 
 })
