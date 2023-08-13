@@ -21,7 +21,7 @@ import DisplayAmount from '../DisplayAmount/DisplayAmount';
 import { AnyAction } from '@reduxjs/toolkit';
 
 // Constants
-import { ENTER } from '../../constants/common';
+import { DISPLAY_AMOUNT_CHANGE, ENTER, ENTER_AMOUNT, REQUIRED_INSERT } from '../../constants/common';
 
 // Custom hooks
 import { useInputChangeHandler, useSubmitHandler } from './Selection.hooks';
@@ -64,12 +64,12 @@ const Selection = () => {
           <TextFieldStyle
             id="filled-basic"
             data-testid="providerTest"
-            label="Enter Amount: $..."
+            label={ENTER_AMOUNT}
             variant="filled"
             inputRef={amountRef}
             {...register('provider', { required: true, minLength: 1 })}
             onChange={() => handleOnChange()}
-            helperText="Required! Please insert $"
+            helperText={REQUIRED_INSERT}
             error={!!errors?.provider}
           />
         </FieldHolder>
@@ -78,7 +78,7 @@ const Selection = () => {
           {ENTER}
         </ButtonHolder>
 
-        <DisplayTitle>Display amount and returned change</DisplayTitle>
+        <DisplayTitle>{DISPLAY_AMOUNT_CHANGE}</DisplayTitle>
         <DisplayHolder>
           <AmountHolder>
             <DisplayAmount />

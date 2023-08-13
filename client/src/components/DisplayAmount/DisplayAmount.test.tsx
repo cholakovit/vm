@@ -37,9 +37,7 @@ describe('DisplayAmount Component', () => {
       </Provider>
     );
 
-    // Use a regular expression to match the text content
-    //const amountRegex = /\$ 10/;
-    //expect(screen.getByText(amountRegex)).toBeInTheDocument();
+    expect(screen.getByText(/Amount:\s+\$ 10/)).toBeInTheDocument();
     expect(screen.queryByText('$ 0')).toBeNull();
   });
 

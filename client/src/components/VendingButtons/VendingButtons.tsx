@@ -16,7 +16,7 @@ import {
 import { useSelector } from 'react-redux';
 
 // Constants
-import { ENTER, RESET } from '../../constants/common';
+import { DISPLAY_ITEM_NUMBER, ENTER, RESET } from '../../constants/common';
 
 // Custom hooks
 import {
@@ -34,6 +34,7 @@ const VendingButtons = () => {
 
   const amount = useSelector((state: RootState) => state.amount.value);
 
+  // Use the custom hook to manage the concatenated number and related actions
   const { displayedConcatenatedNumber, handleButtonClick, handleResetClick } =
     useConcatenatedNumber();
 
@@ -53,12 +54,12 @@ const VendingButtons = () => {
   });
 
   return (
-    <VendingButtonsHolder data-testid="vendingButtonsHolder">
+    <VendingButtonsHolder>
       <ErrorMessage>{errorMessage}</ErrorMessage>
 
       <DisplayItemNumber>
-        <DisplayNumberItemTitle>Display item number:</DisplayNumberItemTitle>
-        <DisplayedConcatenatedNumber>{displayedConcatenatedNumber}</DisplayedConcatenatedNumber>
+        <DisplayNumberItemTitle>{DISPLAY_ITEM_NUMBER}:</DisplayNumberItemTitle>
+        <DisplayedConcatenatedNumber role='dcn'>{displayedConcatenatedNumber}</DisplayedConcatenatedNumber>
       </DisplayItemNumber>
 
       <ButtonSection>
