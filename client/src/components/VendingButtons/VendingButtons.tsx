@@ -68,6 +68,7 @@ const VendingButtons = () => {
             key={index}
             variant="outlined"
             size="small"
+            data-testid={index}
             onClick={() => handleButtonClick(index)}
             disabled={enterClicked} // Disable the button if "Enter" is clicked
           >

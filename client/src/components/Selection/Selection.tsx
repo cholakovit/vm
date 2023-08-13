@@ -81,6 +81,7 @@ const Selection = () => {
         </FieldHolder>
 
         <ButtonHolder
+          id="buttonFormEnter"
           variant="contained"
           disabled={!submitAllowed}
           type="submit"

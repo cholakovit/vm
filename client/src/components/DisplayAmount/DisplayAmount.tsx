@@ -39,7 +39,7 @@ const DisplayAmount = () => {
 
   return (
     <DisplayAmountHolder>
-      <AmountHolder>
+      <AmountHolder role="ah">
         {value > 0 ? (
           <>
             {AMOUNT}:
@@ -48,7 +48,7 @@ const DisplayAmount = () => {
           </>
         ) : null}
       </AmountHolder>
-      <ChangeHolder>
+      <ChangeHolder role="ch">
         {updatedChange > 0 ? (
           <>
             {CHANGE}:
