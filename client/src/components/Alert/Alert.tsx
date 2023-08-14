@@ -15,7 +15,7 @@ const AlertMessage: React.FC<AlertMessageProps> = ({ alert, type }) => {
   // Use the custom hook to handle the timeout logic
   const displayAlert: string | null = useAlertWithTimeout({
     initialAlert: alert,
-    timeout: 3000
+    timeout: 30000
   });
 
   return (

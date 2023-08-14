@@ -17,9 +17,9 @@ import { getItems, getItemsError } from '../../store/dataSlice';
 
 import ErrorBoundary from '../../ErrorBoundaries';
 import { ItemsProps } from '../Item/Item.types';
-import { Suspense } from 'react';
+import { FC, Suspense } from 'react';
 
-const List = () => {
+const List: FC = () => {
   // By using the custom hooks, I have encapsulated the specific logic for form submission and input change in separate hooks,
   // making my code cleaner and more reusable. Now, the logic for handling the form submission and input change is abstracted
   // away in the custom hooks, and I can easily reuse these hooks in other components if needed.

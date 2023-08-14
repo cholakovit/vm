@@ -5,6 +5,7 @@ import { getItems } from "../../store/dataSlice";
 import { useAppSelector } from "../../store/hooks";
 import { subtractPrice } from "../../store/amountSlice";
 import { ItemProps } from "../Item/Item.types";
+import { useGetRTKitemsQuery } from "../../store/apiSlice";
 
 export const useConcatenatedNumber = (): ConcatenatedNumberHookResult => {
   const [displayedConcatenatedNumber, setDisplayedConcatenatedNumber] = useState(0);
@@ -36,7 +37,8 @@ export const useConcatenatedNumber = (): ConcatenatedNumberHookResult => {
 export const useEnterClick = (): EnterClickHookResult => {
   const dispatch: React.Dispatch<AnyAction> = useDispatch();
   //const data = useSelector((state: RootState) => state.data);
-  const items = useAppSelector(getItems);
+  //const items = useAppSelector(getItems);
+  const { data: items } = useGetRTKitemsQuery('')
 
 
   const handleEnterClick = (displayedConcatenatedNumber: number) => {

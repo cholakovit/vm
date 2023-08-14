@@ -16,7 +16,7 @@ describe('AlertMessage Component', () => {
 
     // Fast-forward the timers by 3000ms to simulate the timeout
     act(() => {
-      jest.advanceTimersByTime(3000);
+      jest.advanceTimersByTime(30000);
     });
 
     // Ensure the Alert is no longer in the document
