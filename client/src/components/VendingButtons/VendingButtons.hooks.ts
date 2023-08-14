@@ -38,6 +38,8 @@ export const useEnterClick = (): EnterClickHookResult => {
   const dispatch: React.Dispatch<AnyAction> = useDispatch();
   //const data = useSelector((state: RootState) => state.data);
   //const items = useAppSelector(getItems);
+
+  //RTK Query does "data deduplication" or "automatic caching."
   const { data: items } = useGetRTKitemsQuery('')
 
 
