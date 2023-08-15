@@ -38,3 +38,22 @@ and active community around Redux.
 Overall, RTK Query simplifies and streamlines the data-fetching and state management aspects of your application, allowing you to 
 focus more on building features and less on managing data flow. It's particularly beneficial for complex applications with multiple 
 data sources, real-time updates, and the need for efficient caching strategies.
+
+In RTK Query, a normalized state refers to a specific way of organizing and storing data in the Redux store. Normalization is a technique used to structure complex data in a way that optimizes performance, minimizes redundancy, and simplifies data retrieval.
+In a normalized state, data is stored in a "flat" structure with separate slices for each entity type. Each entity is given a unique identifier (usually its ID) and is stored in its corresponding slice. This is particularly useful when dealing with relational or nested data structures.
+The benefits of a normalized state in RTK Query are:
+
+Efficient Data Storage: Storing data in a normalized way minimizes data duplication. For example, in the example above, the user data (Alice and Bob) is stored only once even though they are associated with multiple posts.
+
+Faster Updates: Updating individual entities is faster because you can access them directly using their IDs, rather than searching through nested structures.
+
+Simpler Data Retrieval: Retrieving data becomes simpler and more performant, as you can directly access entities by their IDs.
+
+Easier Entity Relationship Handling: When dealing with relational data, normalized state makes it easier to manage relationships between entities.
+
+RTK Query's normalized state management is automatic – when you use RTK Query, it manages data normalization for you behind the scenes. This enables you to focus on building features and querying data without needing to worry about complex data structures or cache management.
+
+
+
+
+

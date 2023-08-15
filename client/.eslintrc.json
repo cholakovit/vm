@@ -99,6 +99,8 @@
          "no-multiple-empty-lines": "off",
          "react-hooks/exhaustive-deps": "off",
          "react/jsx-no-undef": "off",
-         "import/no-cycle": "off"
+         "import/no-cycle": "off",
+         "react/require-default-props": "off",
+         "react/no-unescaped-entities": "off"
     }
 }
