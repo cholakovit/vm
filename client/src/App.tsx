@@ -22,8 +22,6 @@ import { ColorModeContextType } from './helper/vmTheme.d'
 // Constants
 import { DARK, LIGHT } from './constants/common'
 
-
-
 const App = (): JSX.Element => {
 
   const [mode, setMode] = useState<PaletteMode>(DARK);
